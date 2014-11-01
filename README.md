@@ -45,3 +45,7 @@ https://github.com/julapy/ofxFFT
 
 what does it do? performs fft and normalises values.
 ofxFFTLive and ofxFFTFile
+
+## Meshes (quick 101)
+
+## Audio Mesh

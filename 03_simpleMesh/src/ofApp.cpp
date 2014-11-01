@@ -32,6 +32,11 @@ void ofApp::setup(){
     meshes.push_back(sphere.getMesh());
     meshes.push_back(cylinder.getMesh());
     meshes.push_back(model.getMesh(0));
+    
+    //--------------------------------------------------------------
+    gui.setup("gui");
+    gui.add(meshIndex.setup("meshIndex", 0, 0, meshes.size()-1));
+    gui.add(bUseTexture.setup("bUseTexture", false));
 }
 
 //--------------------------------------------------------------
@@ -48,36 +53,41 @@ void ofApp::draw(){
     camera.setDistance(dist);
     camera.begin();
     
-    ofPushStyle();
-    
     ofMesh & mesh = meshes[meshIndex];
     
-    ofEnableNormalizedTexCoords();
-    meshTexture.bind();
+    if(bUseTexture == true) {
+        ofEnableNormalizedTexCoords();
+        meshTexture.bind();
+    }
 
     ofSetColor(ofColor::white);
     mesh.drawFaces();
     
-    ofDisableNormalizedTexCoords();
-    meshTexture.unbind();
+    if(bUseTexture == true) {
+        meshTexture.unbind();
+        ofDisableNormalizedTexCoords();
+    }
     
     ofSetColor(ofColor::black);
     mesh.drawWireframe();
     
-    ofPopStyle();
-    
     camera.end();
+    
+    ofDisableDepthTest();
+    ofSetColor(ofColor::white);
+    
+    gui.draw();
 }
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
     if(key == OF_KEY_LEFT) {
-        meshIndex -= 1;
+        meshIndex = meshIndex - 1;
         if(meshIndex < 0) {
             meshIndex = meshes.size() - 1;
         }
     } else if(key == OF_KEY_RIGHT) {
-        meshIndex += 1;
+        meshIndex = meshIndex + 1;
         if(meshIndex > meshes.size() - 1) {
             meshIndex = 0;
         }

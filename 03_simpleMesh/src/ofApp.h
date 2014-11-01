@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
+#include "ofxGui.h"
 #include "ofxAssimpModelLoader.h"
 
 class ofApp : public ofBaseApp{
@@ -21,13 +22,14 @@ public:
     void dragEvent(ofDragInfo dragInfo);
     void gotMessage(ofMessage msg);
 
-    int meshIndex;
-    vector<ofMesh> meshes;
-
-    ofTexture meshTexture;
-    
-    ofxAssimpModelLoader model;
+    ofxPanel gui;
+    ofxSlider<int> meshIndex;
+    ofxToggle bUseTexture;
     
     ofEasyCam camera;
-
+    
+    ofTexture meshTexture;
+    ofxAssimpModelLoader model;
+    vector<ofMesh> meshes;
+    
 };

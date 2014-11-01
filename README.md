@@ -1,6 +1,16 @@
-Making Sound Sculptures in OpenFrameworks
+# Making Sound Sculptures in OpenFrameworks
 
-Audio Input from Microphone.
+A bit of explanation of what this is about.
+
+## Audio Input from Microphone.
+
+The very first thing we need to learn when making anything react to audio in OpenFrameworks, is how to first receive audio data from the real world via a microphone or from an audio file and then how to translate that data into something that we can use.
+
+##### Audio Input from Microphone example.
+
+This OF example is available here,
+[https://github.com/julapy/SoundSculptures/tree/master/01_audioInputFromMic](https://github.com/julapy/SoundSculptures/tree/master/01_audioInputFromMic)
+
 
 ````
 int channelsOut = 0;
@@ -20,3 +30,5 @@ void ofApp::audioIn(float * input, int bufferSize, int nChannels) {
 	}
 }
 ````
+
+## FFT (Fast Fourier Transforms)

@@ -31,4 +31,17 @@ void ofApp::audioIn(float * input, int bufferSize, int nChannels) {
 }
 ````
 
-## FFT (Fast Fourier Transforms)
+## Fast Fourier Transforms (FFT)
+
+Fast Fourier transform (FFT) is an algorithm which can be used to convert a singnal from a time domain to a frequency domain. In digital audio processing this is particularly handy as it makes it easier to analyse and visualise the audio.
+
+The image below shows a raw audio signal from the previous OF example where the audio is plotted over the time domain. Using FFT the audio is transformed so that it can be plotted over the frequency domain, which gives us a spectrum analyser visualisation of the sound.
+
+TODO - add image.
+
+##### ofxFFT
+
+https://github.com/julapy/ofxFFT
+
+what does it do? performs fft and normalises values.
+ofxFFTLive and ofxFFTFile

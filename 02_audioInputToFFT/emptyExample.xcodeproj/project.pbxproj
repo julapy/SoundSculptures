@@ -10,6 +10,10 @@
 		6474CBF619BCE019003C94E2 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6474CBF019BCE00B003C94E2 /* AVFoundation.framework */; };
 		6474CBF719BCE019003C94E2 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6474CBF119BCE00B003C94E2 /* CoreMedia.framework */; };
 		6474CBF819BCE019003C94E2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6474CBF219BCE00B003C94E2 /* QuartzCore.framework */; };
+		679FBC891A04801B00B509B1 /* fft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 679FBC801A04801B00B509B1 /* fft.cpp */; };
+		679FBC8A1A04801B00B509B1 /* ofxFFTBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 679FBC831A04801B00B509B1 /* ofxFFTBase.cpp */; };
+		679FBC8B1A04801B00B509B1 /* ofxFFTFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 679FBC851A04801B00B509B1 /* ofxFFTFile.cpp */; };
+		679FBC8C1A04801B00B509B1 /* ofxFFTLive.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 679FBC871A04801B00B509B1 /* ofxFFTLive.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -65,6 +69,14 @@
 		6474CBF019BCE00B003C94E2 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		6474CBF119BCE00B003C94E2 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		6474CBF219BCE00B003C94E2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		679FBC801A04801B00B509B1 /* fft.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = fft.cpp; sourceTree = "<group>"; };
+		679FBC811A04801B00B509B1 /* fft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fft.h; sourceTree = "<group>"; };
+		679FBC831A04801B00B509B1 /* ofxFFTBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxFFTBase.cpp; sourceTree = "<group>"; };
+		679FBC841A04801B00B509B1 /* ofxFFTBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxFFTBase.h; sourceTree = "<group>"; };
+		679FBC851A04801B00B509B1 /* ofxFFTFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxFFTFile.cpp; sourceTree = "<group>"; };
+		679FBC861A04801B00B509B1 /* ofxFFTFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxFFTFile.h; sourceTree = "<group>"; };
+		679FBC871A04801B00B509B1 /* ofxFFTLive.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxFFTLive.cpp; sourceTree = "<group>"; };
+		679FBC881A04801B00B509B1 /* ofxFFTLive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxFFTLive.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -120,9 +132,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		679FBC7E1A047FDD00B509B1 /* ofxFFT */ = {
+			isa = PBXGroup;
+			children = (
+				679FBC7F1A04801B00B509B1 /* libs */,
+				679FBC821A04801B00B509B1 /* src */,
+			);
+			name = ofxFFT;
+			path = ../../../addons/ofxFFT;
+			sourceTree = "<group>";
+		};
+		679FBC7F1A04801B00B509B1 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				679FBC801A04801B00B509B1 /* fft.cpp */,
+				679FBC811A04801B00B509B1 /* fft.h */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		679FBC821A04801B00B509B1 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				679FBC831A04801B00B509B1 /* ofxFFTBase.cpp */,
+				679FBC841A04801B00B509B1 /* ofxFFTBase.h */,
+				679FBC851A04801B00B509B1 /* ofxFFTFile.cpp */,
+				679FBC861A04801B00B509B1 /* ofxFFTFile.h */,
+				679FBC871A04801B00B509B1 /* ofxFFTLive.cpp */,
+				679FBC881A04801B00B509B1 /* ofxFFTLive.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				679FBC7E1A047FDD00B509B1 /* ofxFFT */,
 			);
 			name = addons;
 			sourceTree = "<group>";
@@ -295,8 +340,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				679FBC891A04801B00B509B1 /* fft.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
+				679FBC8C1A04801B00B509B1 /* ofxFFTLive.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
+				679FBC8A1A04801B00B509B1 /* ofxFFTBase.cpp in Sources */,
+				679FBC8B1A04801B00B509B1 /* ofxFFTFile.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

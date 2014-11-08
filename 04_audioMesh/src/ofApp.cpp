@@ -7,7 +7,7 @@ void ofApp::setup(){
     
     //--------------------------------------------------------------
     ofMesh customMesh;
-    customMesh.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
+    customMesh.setMode(OF_PRIMITIVE_TRIANGLES);
     
     customMesh.addVertex(ofVec3f(-100, -100));
     customMesh.addVertex(ofVec3f(-100, 100));
@@ -19,10 +19,17 @@ void ofApp::setup(){
     customMesh.addTexCoord(ofVec2f(1, 0));
     customMesh.addTexCoord(ofVec2f(1, 1));
     
-    //--------------------------------------------------------------
-    ofSpherePrimitive sphere(100, 20);
-    ofCylinderPrimitive cylinder(100, 200, 20, 20);
+    customMesh.addIndex(0);
+    customMesh.addIndex(3);
+    customMesh.addIndex(1);
     
+    customMesh.addIndex(0);
+    customMesh.addIndex(2);
+    customMesh.addIndex(3);
+    
+    //--------------------------------------------------------------
+    ofSpherePrimitive sphere(100, 20, OF_PRIMITIVE_TRIANGLES);
+   
     //--------------------------------------------------------------
     model.loadModel("head.dae");
     
@@ -30,7 +37,6 @@ void ofApp::setup(){
     meshIndex = 0;
     meshes.push_back(customMesh);
     meshes.push_back(sphere.getMesh());
-    meshes.push_back(cylinder.getMesh());
     meshes.push_back(model.getMesh(0));
     
     //--------------------------------------------------------------
@@ -140,6 +146,8 @@ void ofApp::keyPressed(int key){
         }
     } else if(key == ' ') {
         bUseAudioInput = !bUseAudioInput;
+    } else if(key == 'e' || key == 'E') {
+        ofxObjLoader::save("mesh_export.obj", meshWarped);
     }
 }
 

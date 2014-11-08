@@ -4,6 +4,7 @@
 #include "ofxGui.h"
 #include "ofxAssimpModelLoader.h"
 #include "ofxFFTLive.h"
+#include "ofxObjLoader.h"
 
 class ofApp : public ofBaseApp{
 
@@ -39,5 +40,4 @@ public:
     ofxAssimpModelLoader model;
     vector<ofMesh> meshes;
     ofMesh meshWarped;
-    
 };
